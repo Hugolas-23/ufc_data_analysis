@@ -1,0 +1,36 @@
+# === Ambientes virtuais ===
+venv/
+.env/
+.venv/
+env/
+
+# === Configurações locais do PyCharm ===
+.idea/
+.vscode/
+
+# === Arquivos de cache e compilados ===
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# === Dados brutos e resultados ===
+data/raw/
+data/processed/
+
+# === Arquivos temporários de notebooks ===
+.ipynb_checkpoints/
+
+# === Logs e saídas temporárias ===
+*.log
+*.tmp
+
+# === Sistema operacional ===
+.DS_Store
+Thumbs.db
+
+# === Kaggle ===
+kaggle.json
+
+# === Outros ===
+*.zip
