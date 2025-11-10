@@ -1,7 +1,7 @@
 import zipfile
 import os
 
-caminho_zip = r'C:\Users\hugom\PycharmProjects\ufc_data_analysis\data\raw\ufc-fight-statistics-july-2016-nov-2024.zip'
+caminho_zip = r'C:\Users\hugom\PycharmProjects\ufc_data_analysis\data\raw\ufc-events-data-till-2023.zip'
 destino = r'C:\Users\hugom\PycharmProjects\ufc_data_analysis\data\raw'
 
 if not os.path.exists(caminho_zip):
