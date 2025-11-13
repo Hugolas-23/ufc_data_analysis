@@ -30,6 +30,7 @@ def clean_data():
     new_fighter_statistics['Date'] = pd.to_datetime(new_fighter_statistics['Date'], format='%d-%b-%y', errors='coerce')
     #print(new_fighter_statistics['Date'].head())
     #print(new_fighter_statistics.info())
+    #Apenas estatísticas a partir de 2000
     new_fighter_statistics = new_fighter_statistics[new_fighter_statistics['Date'].dt.year >= 2000]
     #print(new_fighter_statistics['Date'].tail())
     #print(new_fighter_statistics.columns)
@@ -43,4 +44,8 @@ def clean_data():
     #print(new_fighter_statistics['Fighter_1_KD'].head())
     print(new_fighter_statistics.columns)
     #print(new_fighter_statistics.info())
+    #Salvar arquivo limpo
+    processed_path = r'data/processed/ufc_cleaned.csv'
+    new_fighter_statistics.to_csv(processed_path, index=False)
     return new_fighter_statistics
+
