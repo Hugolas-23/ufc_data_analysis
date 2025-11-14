@@ -5,7 +5,7 @@ def load_data():
     return fighter_statistics
 
 def load_clean_data():
-    return pd.read_csv(r'C:\Users\hugom\PycharmProjects\ufc_data_analysis\data\processed\ufc_cleaned.csv')
+    return pd.read_csv(r'C:\Users\hugom\PycharmProjects\ufc_data_analysis\data\interim\ufc_cleaned.csv')
 
 
 
