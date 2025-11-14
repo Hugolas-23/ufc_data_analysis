@@ -16,12 +16,25 @@ def transform_data():
               lambda row: 1 if row['Winner'] == row['Fighter 2'] else 0, axis=1
        )
 
+       # Total de lutas
+       f1_count = new_fighter_statistics['Fighter 1'].value_counts().reset_index()
+       f1_count.columns = ['Fighter', 'Total Fights']
+
+       f2_count = new_fighter_statistics['Fighter 2'].value_counts().reset_index()
+       f2_count.columns = ['Fighter', 'Total Fights']
+
+       combined1 = pd.concat([f1_count, f2_count], ignore_index=True)
+       total_fights = (
+              combined1
+              .groupby('Fighter', as_index=False)['Total Fights'].sum()
+       )
+
        f1 = new_fighter_statistics[['Fighter 1', 'Fighter_1_KD', 'Fighter_1_STR', 'Fighter_1_TD', 'Fighter_1_SUB', 'Weight_Class', 'Win_F1']].copy()
        f2 = new_fighter_statistics[['Fighter 2', 'Fighter_2_KD', 'Fighter_2_STR', 'Fighter_2_TD', 'Fighter_2_SUB', 'Weight_Class', 'Win_F2']].copy()
 
        #Estatísticas de desempenho dos lutadores e divisão entre masculino e feminino
-       f1.columns = ['Fighter', 'KD', 'STR', 'TD', 'SUB', 'Weight_Class', 'Total_wins']
-       f2.columns = ['Fighter', 'KD', 'STR', 'TD', 'SUB', 'Weight_Class', 'Total_wins']
+       f1.columns = ['Fighter', 'KD', 'STR', 'TD', 'SUB', 'Weight Class', 'Total Wins']
+       f2.columns = ['Fighter', 'KD', 'STR', 'TD', 'SUB', 'Weight Class', 'Total Wins']
 
        combined = pd.concat([f1, f2], ignore_index=True)
 
@@ -33,17 +46,19 @@ def transform_data():
                      'STR': 'sum',
                      'TD': 'sum',
                      'SUB': 'sum',
-                     'Weight_Class': 'first',
-                     'Total_wins': 'sum'
+                     'Weight Class': 'first',
+                     'Total Wins': 'sum'
               })
-              .sort_values('Total_wins', ascending=False)
+              .sort_values('Total Wins', ascending=False)
        )
+
+       fighter_summary = total_fights.merge(fighter_summary, on='Fighter', how='left')
 
        #print(fighter_summary.tail())
 
-       women_fighter_summary = fighter_summary[fighter_summary['Weight_Class'].str.contains('Women', na=False)]
+       women_fighter_summary = fighter_summary[fighter_summary['Weight Class'].str.contains('Women', na=False)]
 
-       men_fighter_summary = fighter_summary[~fighter_summary['Weight_Class'].str.contains('Women', na=False)]
+       men_fighter_summary = fighter_summary[~fighter_summary['Weight Class'].str.contains('Women', na=False)]
 
        print(fighter_summary.head())
        print(women_fighter_summary.head())
