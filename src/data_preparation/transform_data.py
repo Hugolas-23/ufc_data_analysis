@@ -54,15 +54,15 @@ def transform_data():
 
        fighter_summary = total_fights.merge(fighter_summary, on='Fighter', how='left')
 
-       print(fighter_summary.tail())
+       #print(fighter_summary.tail())
 
        women_fighter_summary = fighter_summary[fighter_summary['Weight Class'].str.contains('Women', na=False)]
 
        men_fighter_summary = fighter_summary[~fighter_summary['Weight Class'].str.contains('Women', na=False)]
 
-       print(fighter_summary.head())
-       print(women_fighter_summary.head())
-       print(men_fighter_summary.head())
+       #print(fighter_summary.head())
+       #print(women_fighter_summary.head())
+       #print(men_fighter_summary.head())
 
        fighter_summary.to_csv('data/processed/fighter_summary.csv', index=False)
        women_fighter_summary.to_csv('data/processed/women_fighter_summary.csv', index=False)
