@@ -58,7 +58,7 @@ def knockdown_distribution():
 def submission_distribution():
     plt.figure(figsize=(12, 6))
     sns.histplot(fighter_summary['SUB'], bins=100)
-    plt.title("Distribuição de knockdowns por lutador")
+    plt.title("Distribuição de submissions por lutador")
     plt.xlabel("SUB")
     plt.ylabel("Número de lutadores")
     plt.xticks(np.arange(0, fighter_summary['SUB'].max() + 1, 1))
@@ -69,11 +69,47 @@ def submission_distribution():
 def takedown_distribution():
     plt.figure(figsize=(12, 6))
     sns.histplot(fighter_summary['TD'], bins=100)
-    plt.title("Distribuição de knockdowns por lutador")
+    plt.title("Distribuição de takedowns por lutador")
     plt.xlabel("TD")
     plt.ylabel("Número de lutadores")
     plt.xticks(np.arange(0, fighter_summary['TD'].max() + 1, 10))
     plt.tight_layout()
+    plt.show()
+
+def total_fights_by_weight_class():
+    # Agrupamento
+    weight_stats = fighter_summary.groupby('Weight Class')['Total Fights'].mean().reset_index()
+    plt.figure(figsize=(12, 5))
+    sns.barplot(data=weight_stats, x='Weight Class', y='Total Fights')
+    plt.title("Média de Lutas por Categoria de Peso")
+    plt.xticks(rotation=45)
+    plt.show()
+
+def total_kd_by_weight_class():
+    # Agrupamento
+    weight_stats = fighter_summary.groupby('Weight Class')['KD'].mean().reset_index()
+    plt.figure(figsize=(12, 5))
+    sns.barplot(data=weight_stats, x='Weight Class', y='KD')
+    plt.title("Média de Knockdowns por Categoria de Peso")
+    plt.xticks(rotation=45)
+    plt.show()
+
+def total_td_by_weight_class():
+    # Agrupamento
+    weight_stats = fighter_summary.groupby('Weight Class')['TD'].mean().reset_index()
+    plt.figure(figsize=(12, 5))
+    sns.barplot(data=weight_stats, x='Weight Class', y='TD')
+    plt.title("Média de Takedowns por Categoria de Peso")
+    plt.xticks(rotation=45)
+    plt.show()
+
+def total_sub_by_weight_class():
+    # Agrupamento
+    weight_stats = fighter_summary.groupby('Weight Class')['SUB'].mean().reset_index()
+    plt.figure(figsize=(12, 5))
+    sns.barplot(data=weight_stats, x='Weight Class', y='SUB')
+    plt.title("Média de Submissions por Categoria de Peso")
+    plt.xticks(rotation=45)
     plt.show()
 
 
@@ -85,4 +121,8 @@ if __name__ == '__main__':
     #fights_distribution()
     #knockdown_distribution()
     #submission_distribution()
-    takedown_distribution()
+    #takedown_distribution()
+    #total_fights_by_weight_class()
+    #total_kd_by_weight_class()
+    #total_td_by_weight_class()
+    #total_sub_by_weight_class()
