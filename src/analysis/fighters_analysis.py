@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 
-#Fazer função para encontrar os melhores lutadores de cada estilo e etc
 
 def correlation_kd_matrix(df):
     plt.figure(figsize=(10, 8))
@@ -13,12 +12,14 @@ def correlation_kd_matrix(df):
     plt.title("Correlação entre estatísticas de luta")
     plt.show()
 
+
 def correlation_td_matrix(df):
     plt.figure(figsize=(10, 8))
     sns.heatmap(df[['TD', 'STR', 'Total Fights', 'Total Wins']].corr(),
                 annot=True, cmap="coolwarm")
     plt.title("Correlação entre estatísticas de luta")
     plt.show()
+
 
 def correlation_sub_matrix(df):
     plt.figure(figsize=(10, 8))
@@ -27,15 +28,8 @@ def correlation_sub_matrix(df):
     plt.title("Correlação entre estatísticas de luta")
     plt.show()
 
-def top_fighter_by_weight_class():
-    return(
-        fighter_summary.sort_values(["Weight Class", "Fighter"], ascending=[True, False])
-        .groupby("Weight Class")
-        .head(3)
-        .reset_index(drop=True)
-    )
 
-def top_by_weight_class(column):
+def top_fighter_by_weight_class(column):
     df_subset = fighter_summary[['Fighter', 'Weight Class', column]].copy()
     return(
         df_subset.sort_values(["Weight Class", column], ascending=[True, False])
@@ -43,6 +37,7 @@ def top_by_weight_class(column):
         .head(3)
         .reset_index(drop=True)
     )
+
 
 def chance_of_kd_sub(column):
     df_subset = fighter_summary[['Fighter', 'Total Fights', column]].copy()
@@ -53,12 +48,14 @@ def chance_of_kd_sub(column):
         .reset_index(drop=True)
     )
 
+
 def method_percentage_by_weight():
     totals = fighter_summary.groupby("Weight Class")[["KD", "SUB", "TD"]].sum()
     totals['Total Actions'] = totals.sum(axis=1)
 
     percentages = totals.div(totals['Total Actions'], axis=0)[['KD', 'SUB', 'TD']] * 100
     return percentages.round(2)
+
 
 if __name__ == '__main__':
     fighter_summary, men_fighter_summary, women_fighter_summary = load_processed_data()

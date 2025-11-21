@@ -112,9 +112,6 @@ def total_sub_by_weight_class():
     plt.show()
 
 
-
-
-
 if __name__ == '__main__':
     fighter_summary, men_fighter_summary, women_fighter_summary = load_processed_data()
     #fights_distribution()
@@ -124,4 +121,4 @@ if __name__ == '__main__':
     #total_fights_by_weight_class()
     #total_kd_by_weight_class()
     #total_td_by_weight_class()
-    #total_sub_by_weight_class()
+    total_sub_by_weight_class()
