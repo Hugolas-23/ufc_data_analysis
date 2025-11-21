@@ -53,9 +53,12 @@ def chance_of_kd_sub(column):
         .reset_index(drop=True)
     )
 
-def most_used_methods():
-    totals = fighter_summary.groupby("Weight Class")[["KD", "SUB", "TD"]].sum().reset_index()
-    return totals.sort_values("Weight Class")
+def method_percentage_by_weight():
+    totals = fighter_summary.groupby("Weight Class")[["KD", "SUB", "TD"]].sum()
+    totals['Total Actions'] = totals.sum(axis=1)
+
+    percentages = totals.div(totals['Total Actions'], axis=0)[['KD', 'SUB', 'TD']] * 100
+    return percentages.round(2)
 
 if __name__ == '__main__':
     fighter_summary, men_fighter_summary, women_fighter_summary = load_processed_data()
@@ -68,4 +71,6 @@ if __name__ == '__main__':
     #print(top_by_weight_class('TD'))
     #print(chance_of_kd_sub('KD'))
     #print(chance_of_kd_sub('SUB'))
-    print(most_used_methods())
+    print(method_percentage_by_weight())
+
+
