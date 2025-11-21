@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 
-fighter_summary, men_fighter_summary, women_fighter_summary = load_processed_data()
 #distribuição de vitórias
 def win_distribution():
     plt.figure(figsize=(10, 5))
