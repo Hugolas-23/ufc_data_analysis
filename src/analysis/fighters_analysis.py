@@ -54,7 +54,8 @@ def chance_of_kd_sub(column):
     )
 
 def most_used_methods():
-    ...
+    totals = fighter_summary.groupby("Weight Class")[["KD", "SUB", "TD"]].sum().reset_index()
+    return totals.sort_values("Weight Class")
 
 if __name__ == '__main__':
     fighter_summary, men_fighter_summary, women_fighter_summary = load_processed_data()
@@ -66,4 +67,5 @@ if __name__ == '__main__':
     #print(top_by_weight_class('SUB'))
     #print(top_by_weight_class('TD'))
     #print(chance_of_kd_sub('KD'))
-    print(chance_of_kd_sub('SUB'))
+    #print(chance_of_kd_sub('SUB'))
+    print(most_used_methods())
