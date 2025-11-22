@@ -1,5 +1,6 @@
 from src.visualization.charts import *
 from src.analysis.fighters_analysis import *
+from src.analysis.eda_overview import eda_overview
 
 
 def menu():
@@ -21,6 +22,76 @@ def menu():
     print("15 - Top 3 Fighters by Weight Class")
     print("16 - Chance of KD or SUB by Fighter")
     print("17 - Most Utilized Method by Weight")
+    print("18 - EDA Overview")
     print("0 - Exit")
 
 
+def dashboard():
+    while True:
+        menu()
+        choice = int(input("\nSelecione uma opção: "))
+        if choice == 1:
+            win_distribution()
+
+        elif choice == 2:
+            men_weight_destribution()
+
+        elif choice == 3:
+            women_weight_destribution()
+
+        elif choice == 4:
+            fights_distribution()
+
+        elif choice == 5:
+            knockdown_distribution()
+
+        elif choice == 6:
+            submission_distribution()
+
+        elif choice == 7:
+            takedown_distribution()
+
+        elif choice == 8:
+            total_fights_by_weight_class()
+
+        elif choice == 9:
+            total_kd_by_weight_class()
+
+        elif choice == 10:
+            total_sub_by_weight_class()
+
+        elif choice == 11:
+            total_td_by_weight_class()
+
+        elif choice == 12:
+            df = input("Which dataframe do you want to use? (fighter_summary/men_fighter_summary/women_fighter_summary)")
+            correlation_kd_matrix(df)
+
+        elif choice == 13:
+            df = input("Which dataframe do you want to use? (fighter_summary/men_fighter_summary/women_fighter_summary)")
+            correlation_td_matrix(df)
+
+        elif choice == 14:
+            df = input("Which dataframe do you want to use? (fighter_summary/men_fighter_summary/women_fighter_summary)")
+            correlation_sub_matrix(df)
+
+        elif choice == 15:
+            method = input("Which method do you want to analyze? (KD/SUB/TD)")
+            top_fighter_by_weight_class(method)
+
+        elif choice == 16:
+            method = input("Which method do you want to analyze? (KD/SUB)")
+            chance_of_kd_sub(method)
+
+        elif choice == 17:
+            method_percentage_by_weight()
+
+        elif choice == 18:
+            eda_overview()
+
+        elif choice == 0:
+            print("END")
+            break
+
+        else:
+            print("Invalid option! Try again.")

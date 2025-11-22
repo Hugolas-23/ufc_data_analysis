@@ -1,9 +1,9 @@
 from src.data_preparation.load_data import load_processed_data
-import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-import numpy as np
 
+
+fighter_summary, men_fighter_summary, women_fighter_summary = load_processed_data()
 
 def correlation_kd_matrix(df):
     plt.figure(figsize=(10, 8))
@@ -57,17 +57,5 @@ def method_percentage_by_weight():
     return percentages.round(2)
 
 
-if __name__ == '__main__':
-    fighter_summary, men_fighter_summary, women_fighter_summary = load_processed_data()
-    #correlation_kd_matrix(fighter_summary)
-    #correlation_td_matrix(fighter_summary)
-    #correlation_sub_matrix(fighter_summary)
-    #print(top_fighter_by_weight_class())
-    #print(top_by_weight_class('KD'))
-    #print(top_by_weight_class('SUB'))
-    #print(top_by_weight_class('TD'))
-    #print(chance_of_kd_sub('KD'))
-    #print(chance_of_kd_sub('SUB'))
-    print(method_percentage_by_weight())
 
 

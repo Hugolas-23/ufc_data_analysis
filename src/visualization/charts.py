@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 
-#distribuição de vitórias
+fighter_summary, men_fighter_summary, women_fighter_summary = load_processed_data()
 def win_distribution():
     plt.figure(figsize=(10, 5))
     sns.histplot(fighter_summary['Total Wins'], bins=30)
@@ -111,14 +111,3 @@ def total_sub_by_weight_class():
     plt.xticks(rotation=45)
     plt.show()
 
-
-if __name__ == '__main__':
-    fighter_summary, men_fighter_summary, women_fighter_summary = load_processed_data()
-    #fights_distribution()
-    #knockdown_distribution()
-    #submission_distribution()
-    #takedown_distribution()
-    #total_fights_by_weight_class()
-    #total_kd_by_weight_class()
-    #total_td_by_weight_class()
-    total_sub_by_weight_class()

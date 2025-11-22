@@ -48,7 +48,7 @@ def clean_data():
     #print(new_fighter_statistics['Winner'].head())
     #print(new_fighter_statistics['Fighter_1_KD'].head())
 
-    print(new_fighter_statistics.columns)
+    #print(new_fighter_statistics.columns)
     #print(new_fighter_statistics.info())
 
     #Salvar arquivo limpo
