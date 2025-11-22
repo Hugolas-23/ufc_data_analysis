@@ -77,14 +77,14 @@ def dashboard():
 
         elif choice == 15:
             method = input("Which method do you want to analyze? (KD/SUB/TD)")
-            top_fighter_by_weight_class(method)
+            print(top_fighter_by_weight_class(method))
 
         elif choice == 16:
             method = input("Which method do you want to analyze? (KD/SUB)")
-            chance_of_kd_sub(method)
+            print(chance_of_kd_sub(method))
 
         elif choice == 17:
-            method_percentage_by_weight()
+            print(method_percentage_by_weight())
 
         elif choice == 18:
             eda_overview()

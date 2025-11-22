@@ -76,7 +76,6 @@ def takedown_distribution():
     plt.show()
 
 def total_fights_by_weight_class():
-    # Agrupamento
     weight_stats = fighter_summary.groupby('Weight Class')['Total Fights'].mean().reset_index()
     plt.figure(figsize=(12, 5))
     sns.barplot(data=weight_stats, x='Weight Class', y='Total Fights')
@@ -85,7 +84,6 @@ def total_fights_by_weight_class():
     plt.show()
 
 def total_kd_by_weight_class():
-    # Agrupamento
     weight_stats = fighter_summary.groupby('Weight Class')['KD'].mean().reset_index()
     plt.figure(figsize=(12, 5))
     sns.barplot(data=weight_stats, x='Weight Class', y='KD')
@@ -94,7 +92,6 @@ def total_kd_by_weight_class():
     plt.show()
 
 def total_td_by_weight_class():
-    # Agrupamento
     weight_stats = fighter_summary.groupby('Weight Class')['TD'].mean().reset_index()
     plt.figure(figsize=(12, 5))
     sns.barplot(data=weight_stats, x='Weight Class', y='TD')
@@ -103,7 +100,6 @@ def total_td_by_weight_class():
     plt.show()
 
 def total_sub_by_weight_class():
-    # Agrupamento
     weight_stats = fighter_summary.groupby('Weight Class')['SUB'].mean().reset_index()
     plt.figure(figsize=(12, 5))
     sns.barplot(data=weight_stats, x='Weight Class', y='SUB')
